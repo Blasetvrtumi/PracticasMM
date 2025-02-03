@@ -1,0 +1,90 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+#gamecontainer {
+	display: flex;
+	height: 480px;
+	aspect-ratio: 4 / 3;
+	background: url(images/splashscreen.png) no-repeat;
+	background-size: cover;
+	border: 1px solid black;
+}
+
+.gamelayer {
+	aspect-ratio: 4 / 3;
+	height:480px;
+	position:absolute;
+	display:none;
+}
+
+/* Pantalla de Menu de comienzo del juego */
+#gamestartscreen {
+	padding-top: 0px;
+	align-content: center;
+	text-align: center;
+}
+
+#gamestartscreen img {
+	margin:10px;
+	cursor:pointer;
+}
+
+/* Pantalla de selección de nivel */
+#levelselectscreen {
+	padding-top:200px;
+	padding-left:50px;	
+}
+
+#levelselectscreen input {
+	margin:20px;
+	cursor:pointer;
+	background:url(images/icons/level.png) no-repeat;
+	color:yellow;
+	font-size: 20px;
+	width:64px;
+	height:64px;
+	border:0;
+}
+
+/* Pantalla de carga */
+#loadingscreen {
+	background:rgba(100,100,100,0.3);	
+}
+
+#loadingmessage {
+    margin-top:400px;
+	text-align:center;
+	height:48px;
+	color:white;
+	background:url(images/loader.gif) no-repeat center;
+	font:12px Arial;
+}
+
+/* Pantalla de puntuación */
+#scorescreen  {
+    height:60px;
+    font: 32px Comic Sans MS;
+    text-shadow: 0 0 2px #000;
+	color:white;
+}
+
+#scorescreen img{
+    opacity:0.6;
+    top:10px;
+    position:relative;
+    padding-left:10px;
+    cursor:pointer;
+}
+
+#scorescreen #score {
+	position:absolute;
+	top:5px;
+	right:20px;
+}
+
+
