@@ -2,22 +2,23 @@ html, body {
 	margin: 0;
 	padding: 0;
 	height: 100%;
+	width: 100%;
 	display: flex;
 	justify-content: center;
 }
 
 #gamecontainer {
 	display: flex;
-	height: 480px;
-	aspect-ratio: 4 / 3;
+	height: 100%;
+	aspect-ratio: 2;
 	background: url(images/splashscreen.png) no-repeat;
-	background-size: cover;
-	border: 1px solid black;
+	background-position: center;
+	background-size: contain;
 }
 
 .gamelayer {
-	aspect-ratio: 4 / 3;
-	height:480px;
+	height: 480px;
+	aspect-ratio: 2;
 	position:absolute;
 	display:none;
 }
@@ -36,14 +37,16 @@ html, body {
 
 /* Pantalla de selección de nivel */
 #levelselectscreen {
-	padding-top:200px;
-	padding-left:50px;	
+	display: flex;
+	justify-content: center;
+	align-items: center	;
 }
 
 #levelselectscreen input {
 	margin:20px;
 	cursor:pointer;
 	background:url(images/icons/level.png) no-repeat;
+	background-size: contain;
 	color:yellow;
 	font-size: 20px;
 	width:64px;
