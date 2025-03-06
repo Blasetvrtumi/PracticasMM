@@ -23,7 +23,21 @@
 			
 			<div id="gamestartscreen" class="gamelayer">
 				<img src="images/icons/play.png" alt="Play Game" onclick = "game.showLevelScreen();"><br>
-				<img src="images/icons/settings.png" alt="Settings">
+				<img src="images/icons/settings.png" alt="Settings" onclick="game.showSettingsScreen();">
+			</div>
+			
+			<div id="settingsscreen" class="gamelayer">
+				<img src="images/icons/return.png" onclick="game.showStartScreen();" style="position: absolute; top: 20px; left: 20px; cursor: pointer;">
+				<div class="settings-container">
+					<h2>Settings</h2>
+					<div class="setting-item">
+						<label for="debugToggle">Show Physics Debug</label>
+						<div class="toggle-container">
+							<input type="checkbox" id="debugToggle" onchange="game.toggleDebugView();">
+							<label for="debugToggle" class="toggle-label"></label>
+						</div>
+					</div>
+				</div>
 			</div>
 			
 			<div id="levelselectscreen" class="gamelayer">

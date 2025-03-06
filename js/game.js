@@ -68,6 +68,10 @@ var game = {
 		//Obtener el controlador para el lienzo de juego y el contexto
 		game.canvas = document.getElementById('gamecanvas');
 		game.context = game.canvas.getContext('2d');
+
+		// Cargar preferencias guardadas
+		this.showDebug = localStorage.getItem('showDebug') === 'true';
+		$('#debugcanvas').toggle(this.showDebug);
 	},	  
 	startBackgroundMusic:function(){
 		var toggleImage = $("#togglemusic")[0];	
@@ -97,6 +101,19 @@ var game = {
 	showStartScreen:function(){
 		$('.gamelayer').hide();
 		$('#gamestartscreen').show('slow');
+	},
+	showSettingsScreen: function() {
+		$('.gamelayer').hide();
+		$('#settingsscreen').show('slow');
+		// Actualizar el estado del checkbox basado en la configuración actual
+		$('#debugToggle').prop('checked', this.showDebug);
+	},
+	toggleDebugView: function() {
+		this.showDebug = $('#debugToggle').prop('checked');
+		// Guardar la preferencia en localStorage
+		localStorage.setItem('showDebug', this.showDebug);
+		// Actualizar la visibilidad del canvas de depuración
+		$('#debugcanvas').toggle(this.showDebug);
 	},
 	restartLevel:function(){
 		window.cancelAnimationFrame(game.animationFrame);		
@@ -857,6 +874,7 @@ var loader = {
 	loaded:true,
 	loadedCount:0, // Los assets que se han cargado hasta ahora
 	totalCount:0, // Número total de assets que deben cargarse
+	loadingItems: new Set(), // Conjunto para rastrear items en carga
 	
 	init:function(){
 		// Comprobar si hay soporte de sonido
@@ -875,28 +893,53 @@ var loader = {
 		// Comprobar para ogg, después mp3, y finalmente fijar soundFileExtn a indefinido
 		loader.soundFileExtn = oggSupport?".ogg":mp3Support?".mp3":undefined;		
 	},
-	
-	loadImage:function(url){
-		this.totalCount++;
+
+	reset: function() {
+		this.loadedCount = 0;
+		this.totalCount = 0;
+		this.loadingItems.clear();
 		this.loaded = false;
 		$('#loadingscreen').show();
+	},
+	
+	loadImage:function(url){
+		// Si es el primer item de una nueva carga, reiniciar los contadores
+		if (this.totalCount === 0) {
+			this.reset();
+		}
+		this.totalCount++;
 		var image = new Image();
 		image.src = url;
-		image.onload = loader.itemLoaded;
+		// Usar una función anónima para asegurar que el item solo se cuenta una vez
+		image.onload = function() {
+			if (!loader.loadingItems.has(image)) {
+				loader.loadingItems.add(image);
+				loader.itemLoaded();
+			}
+		};
 		return image;
 	},
 	soundFileExtn:".ogg",
 	loadSound:function(url){
+		// Si es el primer item de una nueva carga, reiniciar los contadores
+		if (this.totalCount === 0) {
+			this.reset();
+		}
 		this.totalCount++;
-		this.loaded = false;
-		$('#loadingscreen').show();
 		var audio = new Audio();
 		audio.src = url+loader.soundFileExtn;
-		audio.addEventListener("canplaythrough", loader.itemLoaded, false);
+		// Usar una función anónima para asegurar que el item solo se cuenta una vez
+		var loadHandler = function() {
+			if (!loader.loadingItems.has(audio)) {
+				loader.loadingItems.add(audio);
+				loader.itemLoaded();
+			}
+		};
+		audio.addEventListener("canplaythrough", loadHandler, false);
 		return audio;   
 	},
 	itemLoaded:function(){
-		loader.loadedCount++;
+		loader.loadedCount = Math.min(loader.loadedCount + 1, loader.totalCount);
 		$('#loadingmessage').html('Loaded '+loader.loadedCount+' of '+loader.totalCount);
 		if (loader.loadedCount === loader.totalCount){
 			// Loader se ha cargado completamente. . .

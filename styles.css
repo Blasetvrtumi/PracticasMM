@@ -107,3 +107,65 @@ endingscreen {
     text-shadow: 0 0 2px #000;
 	color:white;
 }
+
+#settingsscreen {
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.settings-container {
+    background: url(images/icons/settingsCard.png) no-repeat center;
+    width: 480px;
+    height: 420px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.settings-container h2 {
+    margin: 0 0 40px 0;
+    color: white;
+    text-align: center;
+    font-size: 24px;
+    text-shadow: 0 0 2px #000;
+}
+
+.setting-item {
+    margin: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+}
+
+.setting-item label {
+    color: white;
+    font-size: 18px;
+    text-shadow: 0 0 2px #000;
+}
+
+.toggle-container {
+    position: relative;
+    width: 90px;
+    height: 39px;
+}
+
+.toggle-container input[type="checkbox"] {
+    display: none;
+}
+
+.toggle-label {
+    display: block;
+    width: 90px;
+    height: 39px;
+    background: url(images/icons/toggleOff.png) no-repeat;
+    cursor: pointer;
+}
+
+.toggle-container input[type="checkbox"]:checked + .toggle-label {
+    background: url(images/icons/toggleOn.png) no-repeat;
+}
