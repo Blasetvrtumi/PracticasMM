@@ -1,33 +1,21 @@
-html, body {
-	margin: 0;
-	padding: 0;
-	height: 100%;
-	width: 100%;
-	display: flex;
-	justify-content: center;
-}
-
 #gamecontainer {
-	display: flex;
-	height: 100%;
-	aspect-ratio: 2;
-	background: url(images/splashscreen.png) no-repeat;
-	background-position: center;
-	background-size: contain;
+	width:640px;
+	height:480px;
+	background: url(images/splashscreen.png);
+	border: 1px solid black;
 }
 
 .gamelayer {
-	height: 480px;
-	aspect-ratio: 2;
+	width:640px;
+	height:480px;
 	position:absolute;
 	display:none;
 }
 
-/* Pantalla de Menu de comienzo del juego */
+/* Pantalla del menú de incio del juego */
 #gamestartscreen {
-	padding-top: 0px;
-	align-content: center;
-	text-align: center;
+	padding-top:250px;
+	text-align:center;
 }
 
 #gamestartscreen img {
@@ -37,16 +25,14 @@ html, body {
 
 /* Pantalla de selección de nivel */
 #levelselectscreen {
-	display: flex;
-	justify-content: center;
-	align-items: center	;
+	padding-top:150px;
+	padding-left:50px;	
 }
 
 #levelselectscreen input {
 	margin:20px;
 	cursor:pointer;
 	background:url(images/icons/level.png) no-repeat;
-	background-size: contain;
 	color:yellow;
 	font-size: 20px;
 	width:64px;
@@ -90,4 +76,34 @@ html, body {
 	right:20px;
 }
 
+/* Pantalla de finalización */
+endingscreen {
+	text-align:center;	
+}
 
+#endingscreen div {
+	height:430px;
+	padding-top:50px;
+	border:1px;
+	background:rgba(1,1,1,0.5);
+	text-align:left;
+	padding-left:100px;
+}
+
+#endingscreen p  {    
+    font: 20px Comic Sans MS;
+    text-shadow: 0 0 2px #000;
+	color:white;
+}
+
+#endingscreen p img{
+	top:10px;
+	position:relative;
+	cursor:pointer;
+}
+
+#endingscreen #endingmessage  {    
+    font: 32px Comic Sans MS;
+    text-shadow: 0 0 2px #000;
+	color:white;
+}
