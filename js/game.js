@@ -443,6 +443,40 @@ var levels = {
 				{type:"hero", name:"orange",x:80,y:405},
 				{type:"hero", name:"apple",x:140,y:405},
 			]
+		},
+		{   // Tercer nivel
+			foreground:'desert-foreground',
+			background:'clouds-background',
+			entities:[
+				{type:"ground", name:"dirt", x:500,y:440,width:1000,height:20,isStatic:true},
+				{type:"ground", name:"wood", x:185,y:390,width:30,height:80,isStatic:true},
+
+				// Estructura para el burger (más alto)
+				{type:"block", name:"wood", x:520,y:380,angle:90,width:100,height:25},
+				{type:"block", name:"glass", x:520,y:280,angle:90,width:100,height:25},
+				{type:"block", name:"glass", x:520,y:180,angle:90,width:100,height:25},
+				{type:"villain", name:"burger",x:520,y:120,calories:590},
+
+				// Estructura para las fries (altura media)
+				{type:"block", name:"wood", x:620,y:380,angle:90,width:100,height:25},
+				{type:"block", name:"glass", x:620,y:280,angle:90,width:100,height:25},
+				{type:"villain", name:"fries",x:620,y:220,calories:420},
+
+				// Estructura para la pizza (altura media-baja)
+				{type:"block", name:"wood", x:720,y:380,angle:90,width:100,height:25},
+				{type:"block", name:"glass", x:720,y:280,angle:90,width:100,height:25},
+				{type:"villain", name:"pizza",x:720,y:200,calories:750},
+
+				// Estructura para el sodacan (más bajo)
+				{type:"block", name:"wood", x:820,y:380,angle:90,width:100,height:25},
+				{type:"villain", name:"sodacan",x:820,y:290,calories:150},
+
+				// 4 héroes
+				{type:"hero", name:"strawberry",x:30,y:415},
+				{type:"hero", name:"orange",x:80,y:405},
+				{type:"hero", name:"apple",x:140,y:405},
+				{type:"hero", name:"watermelon",x:200,y:405},
+			]
 		}
 	],
 
@@ -541,6 +575,15 @@ var entities = {
 			friction:0.5,
 			restitution:0.6,	
 		},
+		"pizza":{
+			shape:"rectangle",
+			fullHealth:60,
+			width:40,
+			height:50,
+			density:1,
+			friction:0.5,
+			restitution:0.5,	
+		},
 		"apple":{
 			shape:"circle",
 			radius:25,
@@ -559,6 +602,13 @@ var entities = {
 			shape:"circle",
 			radius:15,
 			density:2.0,
+			friction:0.5,
+			restitution:0.4,	
+		},
+		"watermelon":{
+			shape:"circle",
+			radius:30,
+			density:1.8,
 			friction:0.5,
 			restitution:0.4,	
 		},
