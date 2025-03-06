@@ -94,6 +94,10 @@ var game = {
 		$('.gamelayer').hide();
 		$('#levelselectscreen').show('slow');
 	},
+	showStartScreen:function(){
+		$('.gamelayer').hide();
+		$('#gamestartscreen').show('slow');
+	},
 	restartLevel:function(){
 		window.cancelAnimationFrame(game.animationFrame);		
 		game.lastUpdateTime = undefined;
@@ -356,7 +360,7 @@ var game = {
 		}
 	},
 	drawSlingshotBand:function(){
-		game.context.strokeStyle = "rgb(68,31,11)"; // Color marrón oscuro
+		game.context.strokeStyle = "#5797FF"; // Color azul
 		game.context.lineWidth = 6; // Dibuja una línea gruesa
 
 		// Utilizar el ángulo y el radio del héroe para calcular el centro del héroe
@@ -444,7 +448,7 @@ var levels = {
 
 	// Inicializar pantalla de selección de nivel
 	init:function(){
-		var html = "";
+		var html = '<img src="images/icons/return.png" onclick="game.showStartScreen();" style="position: absolute; top: 20px; left: 20px; cursor: pointer;">'; // Botón de regreso
 		for (var i=0; i < levels.data.length; i++) {
 			var level = levels.data[i];
 			html += '<input type="button" value="'+(i+1)+'">';
