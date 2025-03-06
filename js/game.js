@@ -228,7 +228,7 @@ var game = {
 			game.panTo(heroX);
 
 			//Y esperar hasta que deja de moverse o está fuera de los límites
-			if(!game.currentHero.IsAwake() || heroX<0 || heroX >game.currentLevel.foregroundImage.width ){
+			if(!game.currentHero.IsAwake() || heroX < 0 || heroX > game.currentLevel.foregroundImage.width || game.currentHero.GetLinearVelocity().Length() < 0.5){
 				// Luego borra el viejo héroe
 				box2d.world.DestroyBody(game.currentHero);
 				game.currentHero = undefined;
@@ -476,6 +476,58 @@ var levels = {
 				{type:"hero", name:"orange",x:80,y:405},
 				{type:"hero", name:"apple",x:140,y:405},
 				{type:"hero", name:"watermelon",x:200,y:405},
+			]
+		},
+		{   // Cuarto nivel - Pirámide compleja 100% estable
+			foreground:'desert-foreground',
+			background:'clouds-background',
+			entities:[
+				{type:"ground", name:"dirt", x:500,y:440,width:1000,height:20,isStatic:true},
+				{type:"ground", name:"wood", x:185,y:390,width:30,height:80,isStatic:true},
+		
+				// Base de la pirámide (columnas verticales firmes)
+				{type:"block", name:"wood", x:520,y:380,angle:90,width:100,height:25},
+				{type:"block", name:"wood", x:620,y:380,angle:90,width:100,height:25},
+				{type:"block", name:"wood", x:720,y:380,angle:90,width:100,height:25},
+				{type:"block", name:"wood", x:820,y:380,angle:90,width:100,height:25},
+				
+				// Primera plataforma horizontal (perfectamente apoyada)
+				{type:"block", name:"wood", x:570,y:320,width:100,height:25},
+				{type:"block", name:"wood", x:670,y:320,width:100,height:25},
+				{type:"block", name:"wood", x:770,y:320,width:100,height:25},
+				
+				// Segunda capa de columnas verticales
+				{type:"block", name:"glass", x:570,y:270,angle:90,width:75,height:25},
+				{type:"block", name:"glass", x:670,y:270,angle:90,width:75,height:25},
+				{type:"block", name:"glass", x:770,y:270,angle:90,width:75,height:25},
+				
+				// Segunda plataforma horizontal
+				{type:"block", name:"wood", x:620,y:220,width:100,height:25},
+				{type:"block", name:"wood", x:720,y:220,width:100,height:25},
+				
+				// Tercera capa de columnas verticales
+				{type:"block", name:"glass", x:620,y:170,angle:90,width:75,height:25},
+				{type:"block", name:"glass", x:720,y:170,angle:90,width:75,height:25},
+				
+				// Cúspide de la pirámide
+				{type:"block", name:"wood", x:670,y:130,width:100,height:25},
+				
+				// Villanos estratégicamente colocados
+				{type:"villain", name:"sodacan", x:670,y:105,calories:750},
+				{type:"villain", name:"pizza", x:670,y:195,calories:590},
+				{type:"villain", name:"fries", x:620,y:245,calories:150},
+				{type:"villain", name:"fries", x:720,y:245,calories:420},
+				{type:"villain", name:"burger", x:570,y:380,calories:590},
+				{type:"villain", name:"burger", x:670,y:380,calories:590},
+				{type:"villain", name:"burger", x:770,y:380,calories:590},
+
+				
+				// Héroes (frutas)
+				{type:"hero", name:"strawberry", x:30,y:415},
+				{type:"hero", name:"orange", x:80,y:405},
+				{type:"hero", name:"apple", x:140,y:405},
+				{type:"hero", name:"watermelon", x:200,y:405},
+				{type:"hero", name:"banana", x:260,y:405},
 			]
 		}
 	],
