@@ -97,14 +97,17 @@ var game = {
 	showLevelScreen:function(){
 		$('.gamelayer').hide();
 		$('#levelselectscreen').show('slow');
+		game.stopBackgroundMusic();
 	},
 	showStartScreen:function(){
 		$('.gamelayer').hide();
 		$('#gamestartscreen').show('slow');
+		game.stopBackgroundMusic();
 	},
 	showSettingsScreen: function() {
 		$('.gamelayer').hide();
 		$('#settingsscreen').show('slow');
+		game.stopBackgroundMusic();
 		// Actualizar el estado del checkbox basado en la configuración actual
 		$('#debugToggle').prop('checked', this.showDebug);
 	},
@@ -132,7 +135,7 @@ var game = {
 	slingshotY:280,
 	start:function(){
 		$('.gamelayer').hide();
-		// Display the game canvas and score 
+		// Mostrar el lienzo del juego y la puntuación
 		$('#gamecanvas').show();
 		$('#scorescreen').show();
 	
@@ -577,6 +580,8 @@ var levels = {
 		game.currentHero = undefined;
 		var level = levels.data[number];
 
+		// Reiniciar el estado del cargador antes de cargar nuevos recursos
+		loader.reset();
 
 		//Cargar las imágenes de fondo, primer plano y honda
 		game.currentLevel.backgroundImage = loader.loadImage("images/backgrounds/"+level.background+".png");
@@ -590,7 +595,7 @@ var levels = {
 			entities.create(entity);			
 		};
 
-		  //Llamar a game.start() una vez que los assets se hayan cargado
+		  //Llamar a game.start() una vez que los recursos se hayan cargado
 	   if(loader.loaded){
 		   game.start()
 	   } else {
@@ -782,7 +787,7 @@ var box2d = {
 			var entity2 = body2.GetUserData();
 
 			var impulseAlongNormal = Math.abs(impulse.normalImpulses[0]);
-			// Este listener es llamado con mucha frecuencia. Filtra los impulsos muy prqueños.
+			// Este listener es llamado con mucha frecuencia. Filtra los impulsos muy pequeños.
 			// Después de probar diferentes valores, 5 parece funcionar bien
 			if(impulseAlongNormal>5){
 				// Si los objetos tienen una salud, reduzca la salud por el valor del impulso			
@@ -872,9 +877,9 @@ var box2d = {
 
 var loader = {
 	loaded:true,
-	loadedCount:0, // Los assets que se han cargado hasta ahora
-	totalCount:0, // Número total de assets que deben cargarse
-	loadingItems: new Set(), // Conjunto para rastrear items en carga
+	loadedCount:0, // Los recursos que se han cargado hasta ahora
+	totalCount:0, // Número total de recursos que deben cargarse
+	loadingItems: new Set(), // Conjunto para rastrear elementos en carga
 	
 	init:function(){
 		// Comprobar si hay soporte de sonido
@@ -917,6 +922,10 @@ var loader = {
 				loader.itemLoaded();
 			}
 		};
+		image.onerror = function() {
+			console.error('Failed to load image:', url);
+			loader.itemLoaded(); // Still count it as loaded to prevent hanging
+		};
 		return image;
 	},
 	soundFileExtn:".ogg",
@@ -936,6 +945,10 @@ var loader = {
 			}
 		};
 		audio.addEventListener("canplaythrough", loadHandler, false);
+		audio.addEventListener("error", function() {
+			console.error('Failed to load sound:', url);
+			loader.itemLoaded(); // Still count it as loaded to prevent hanging
+		}, false);
 		return audio;   
 	},
 	itemLoaded:function(){

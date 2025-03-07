@@ -130,8 +130,11 @@ endingscreen {
     margin: 0 0 40px 0;
     color: white;
     text-align: center;
-    font-size: 24px;
+    font-size: 28px;
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
     text-shadow: 0 0 2px #000;
+    letter-spacing: 1px;
+    font-weight: 300;
 }
 
 .setting-item {
@@ -145,7 +148,10 @@ endingscreen {
 .setting-item label {
     color: white;
     font-size: 18px;
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
     text-shadow: 0 0 2px #000;
+    letter-spacing: 0.5px;
+    font-weight: 400;
 }
 
 .toggle-container {
