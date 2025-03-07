@@ -51,13 +51,13 @@ var game = {
 	
 		//"Kindergarten" by Gurdonark
 		//http://ccmixter.org/files/gurdonark/26491 is licensed under a Creative Commons license
-		game.backgroundMusic = loader.loadSound('audio/gurdonark-kindergarten');
+		game.backgroundMusic = loader.loadSound('audio/main-theme');
 
 		game.slingshotReleasedSound = loader.loadSound("audio/released");
 		game.bounceSound = loader.loadSound('audio/bounce');
 		game.breakSound = {
 			"glass":loader.loadSound('audio/glassbreak'),
-			"wood":loader.loadSound('audio/woodbreak')
+			"metal-block":loader.loadSound('audio/metal-break')
 		};
 
 
@@ -420,101 +420,101 @@ var levels = {
 	// Datos de nivel
 	data:[
 	 {   // Primer nivel 
-		foreground:'desert-foreground',
-		background:'clouds-background',
+		foreground:'moon-fg',
+		background:'space-bg',
 		entities:[
 			{type:"ground", name:"dirt", x:500,y:440,width:1000,height:20,isStatic:true},
-			{type:"ground", name:"wood", x:185,y:390,width:30,height:80,isStatic:true},
+			{type:"ground", name:"metal-block", x:185,y:390,width:30,height:80,isStatic:true},
 
-			{type:"block", name:"wood", x:520,y:380,angle:90,width:100,height:25},
+			{type:"block", name:"metal-block", x:520,y:380,angle:90,width:100,height:25},
 			{type:"block", name:"glass", x:520,y:280,angle:90,width:100,height:25},								
-			{type:"villain", name:"burger",x:520,y:205,calories:590},
+			{type:"villain", name:"crate1",x:520,y:205,calories:590},
 
-			{type:"block", name:"wood", x:620,y:380,angle:90,width:100,height:25},
+			{type:"block", name:"metal-block", x:620,y:380,angle:90,width:100,height:25},
 			{type:"block", name:"glass", x:620,y:280,angle:90,width:100,height:25},								
-			{type:"villain", name:"fries", x:620,y:205,calories:420},				
+			{type:"villain", name:"crate2", x:620,y:205,calories:420},				
 
-			{type:"hero", name:"orange",x:80,y:405},
-			{type:"hero", name:"apple",x:140,y:405},
+			{type:"hero", name:"ball2",x:80,y:405},
+			{type:"hero", name:"ball1",x:140,y:405},
 		]
 	 },
 		{   // Segundo nivel
-			foreground:'desert-foreground',
-			background:'clouds-background',
+			foreground:'moon-fg',
+			background:'space-bg',
 			entities:[
 				{type:"ground", name:"dirt", x:500,y:440,width:1000,height:20,isStatic:true},
-				{type:"ground", name:"wood", x:185,y:390,width:30,height:80,isStatic:true},
+				{type:"ground", name:"metal-block", x:185,y:390,width:30,height:80,isStatic:true},
 	
-				{type:"block", name:"wood", x:820,y:380,angle:90,width:100,height:25},
-				{type:"block", name:"wood", x:720,y:380,angle:90,width:100,height:25},
-				{type:"block", name:"wood", x:620,y:380,angle:90,width:100,height:25},
+				{type:"block", name:"metal-block", x:820,y:380,angle:90,width:100,height:25},
+				{type:"block", name:"metal-block", x:720,y:380,angle:90,width:100,height:25},
+				{type:"block", name:"metal-block", x:620,y:380,angle:90,width:100,height:25},
 				{type:"block", name:"glass", x:670,y:317.5,width:100,height:25},
 				{type:"block", name:"glass", x:770,y:317.5,width:100,height:25},				
 
 				{type:"block", name:"glass", x:670,y:255,angle:90,width:100,height:25},
 				{type:"block", name:"glass", x:770,y:255,angle:90,width:100,height:25},
-				{type:"block", name:"wood", x:720,y:192.5,width:100,height:25},	
+				{type:"block", name:"metal-block", x:720,y:192.5,width:100,height:25},	
 
-				{type:"villain", name:"burger",x:715,y:155,calories:590},
-				{type:"villain", name:"fries",x:670,y:405,calories:420},
-				{type:"villain", name:"sodacan",x:765,y:400,calories:150},
+				{type:"villain", name:"crate1",x:715,y:155,calories:590},
+				{type:"villain", name:"crate2",x:670,y:405,calories:420},
+				{type:"villain", name:"crate4",x:765,y:400,calories:150},
 
-				{type:"hero", name:"strawberry",x:30,y:415},
-				{type:"hero", name:"orange",x:80,y:405},
-				{type:"hero", name:"apple",x:140,y:405},
+				{type:"hero", name:"ball4",x:30,y:415},
+				{type:"hero", name:"ball2",x:80,y:405},
+				{type:"hero", name:"ball1",x:140,y:405},
 			]
 		},
 		{   // Tercer nivel
-			foreground:'desert-foreground',
-			background:'clouds-background',
+			foreground:'moon-fg',
+			background:'space-bg',
 			entities:[
 				{type:"ground", name:"dirt", x:500,y:440,width:1000,height:20,isStatic:true},
-				{type:"ground", name:"wood", x:185,y:390,width:30,height:80,isStatic:true},
+				{type:"ground", name:"metal-block", x:185,y:390,width:30,height:80,isStatic:true},
 
-				// Estructura para el burger (más alto)
-				{type:"block", name:"wood", x:520,y:380,angle:90,width:100,height:25},
+				// Estructura para el crate1 (más alto)
+				{type:"block", name:"metal-block", x:520,y:380,angle:90,width:100,height:25},
 				{type:"block", name:"glass", x:520,y:280,angle:90,width:100,height:25},
 				{type:"block", name:"glass", x:520,y:180,angle:90,width:100,height:25},
-				{type:"villain", name:"burger",x:520,y:120,calories:590},
+				{type:"villain", name:"crate1",x:520,y:120,calories:590},
 
-				// Estructura para las fries (altura media)
-				{type:"block", name:"wood", x:620,y:380,angle:90,width:100,height:25},
+				// Estructura para el crate2 (altura media)
+				{type:"block", name:"metal-block", x:620,y:380,angle:90,width:100,height:25},
 				{type:"block", name:"glass", x:620,y:280,angle:90,width:100,height:25},
-				{type:"villain", name:"fries",x:620,y:220,calories:420},
+				{type:"villain", name:"crate2",x:620,y:220,calories:420},
 
-				// Estructura para la pizza (altura media-baja)
-				{type:"block", name:"wood", x:720,y:380,angle:90,width:100,height:25},
+				// Estructura para el crate3 (altura media-baja)
+				{type:"block", name:"metal-block", x:720,y:380,angle:90,width:100,height:25},
 				{type:"block", name:"glass", x:720,y:280,angle:90,width:100,height:25},
-				{type:"villain", name:"pizza",x:720,y:200,calories:750},
+				{type:"villain", name:"crate3",x:720,y:200,calories:750},
 
-				// Estructura para el sodacan (más bajo)
-				{type:"block", name:"wood", x:820,y:380,angle:90,width:100,height:25},
-				{type:"villain", name:"sodacan",x:820,y:290,calories:150},
+				// Estructura para el crate4 (más bajo)
+				{type:"block", name:"metal-block", x:820,y:380,angle:90,width:100,height:25},
+				{type:"villain", name:"crate4",x:820,y:290,calories:150},
 
 				// 4 héroes
-				{type:"hero", name:"strawberry",x:30,y:415},
-				{type:"hero", name:"orange",x:80,y:405},
-				{type:"hero", name:"apple",x:140,y:405},
-				{type:"hero", name:"watermelon",x:200,y:405},
+				{type:"hero", name:"ball4",x:30,y:415},
+				{type:"hero", name:"ball2",x:80,y:405},
+				{type:"hero", name:"ball1",x:140,y:405},
+				{type:"hero", name:"ball5",x:200,y:405},
 			]
 		},
 		{   // Cuarto nivel - Pirámide compleja 100% estable
-			foreground:'desert-foreground',
-			background:'clouds-background',
+			foreground:'moon-fg',
+			background:'space-bg',
 			entities:[
 				{type:"ground", name:"dirt", x:500,y:440,width:1000,height:20,isStatic:true},
-				{type:"ground", name:"wood", x:185,y:390,width:30,height:80,isStatic:true},
+				{type:"ground", name:"metal-block", x:185,y:390,width:30,height:80,isStatic:true},
 		
 				// Base de la pirámide (columnas verticales firmes)
-				{type:"block", name:"wood", x:520,y:380,angle:90,width:100,height:25},
-				{type:"block", name:"wood", x:620,y:380,angle:90,width:100,height:25},
-				{type:"block", name:"wood", x:720,y:380,angle:90,width:100,height:25},
-				{type:"block", name:"wood", x:820,y:380,angle:90,width:100,height:25},
+				{type:"block", name:"metal-block", x:520,y:380,angle:90,width:100,height:25},
+				{type:"block", name:"metal-block", x:620,y:380,angle:90,width:100,height:25},
+				{type:"block", name:"metal-block", x:720,y:380,angle:90,width:100,height:25},
+				{type:"block", name:"metal-block", x:820,y:380,angle:90,width:100,height:25},
 				
 				// Primera plataforma horizontal (perfectamente apoyada)
-				{type:"block", name:"wood", x:570,y:320,width:100,height:25},
-				{type:"block", name:"wood", x:670,y:320,width:100,height:25},
-				{type:"block", name:"wood", x:770,y:320,width:100,height:25},
+				{type:"block", name:"metal-block", x:570,y:320,width:100,height:25},
+				{type:"block", name:"metal-block", x:670,y:320,width:100,height:25},
+				{type:"block", name:"metal-block", x:770,y:320,width:100,height:25},
 				
 				// Segunda capa de columnas verticales
 				{type:"block", name:"glass", x:570,y:270,angle:90,width:75,height:25},
@@ -522,32 +522,32 @@ var levels = {
 				{type:"block", name:"glass", x:770,y:270,angle:90,width:75,height:25},
 				
 				// Segunda plataforma horizontal
-				{type:"block", name:"wood", x:620,y:220,width:100,height:25},
-				{type:"block", name:"wood", x:720,y:220,width:100,height:25},
+				{type:"block", name:"metal-block", x:620,y:220,width:100,height:25},
+				{type:"block", name:"metal-block", x:720,y:220,width:100,height:25},
 				
 				// Tercera capa de columnas verticales
 				{type:"block", name:"glass", x:620,y:170,angle:90,width:75,height:25},
 				{type:"block", name:"glass", x:720,y:170,angle:90,width:75,height:25},
 				
 				// Cúspide de la pirámide
-				{type:"block", name:"wood", x:670,y:130,width:100,height:25},
+				{type:"block", name:"metal-block", x:670,y:130,width:100,height:25},
 				
 				// Villanos estratégicamente colocados
-				{type:"villain", name:"sodacan", x:670,y:105,calories:750},
-				{type:"villain", name:"pizza", x:670,y:195,calories:590},
-				{type:"villain", name:"fries", x:620,y:245,calories:150},
-				{type:"villain", name:"fries", x:720,y:245,calories:420},
-				{type:"villain", name:"burger", x:570,y:380,calories:590},
-				{type:"villain", name:"burger", x:670,y:380,calories:590},
-				{type:"villain", name:"burger", x:770,y:380,calories:590},
+				{type:"villain", name:"crate4", x:670,y:105,calories:750},
+				{type:"villain", name:"crate3", x:670,y:195,calories:590},
+				{type:"villain", name:"crate2", x:620,y:245,calories:150},
+				{type:"villain", name:"crate2", x:720,y:245,calories:420},
+				{type:"villain", name:"crate1", x:570,y:380,calories:590},
+				{type:"villain", name:"crate1", x:670,y:380,calories:590},
+				{type:"villain", name:"crate1", x:770,y:380,calories:590},
 
 				
 				// Héroes (frutas)
-				{type:"hero", name:"strawberry", x:30,y:415},
-				{type:"hero", name:"orange", x:80,y:405},
-				{type:"hero", name:"apple", x:140,y:405},
-				{type:"hero", name:"watermelon", x:200,y:405},
-				{type:"hero", name:"banana", x:260,y:405},
+				{type:"hero", name:"ball4", x:30,y:415},
+				{type:"hero", name:"ball2", x:80,y:405},
+				{type:"hero", name:"ball1", x:140,y:405},
+				{type:"hero", name:"ball5", x:200,y:405},
+				{type:"hero", name:"ball3", x:260,y:405},
 			]
 		}
 	],
@@ -612,7 +612,7 @@ var entities = {
 			friction:0.4,
 			restitution:0.15,
 		},
-		"wood":{
+		"metal-block":{
 			fullHealth:500,
 			density:0.7,
 			friction:0.4,
@@ -623,7 +623,7 @@ var entities = {
 			friction:1.5,
 			restitution:0.2,	
 		},
-		"burger":{
+		"crate1":{
 			shape:"circle",
 			fullHealth:40,
 			radius:25,
@@ -631,7 +631,7 @@ var entities = {
 			friction:0.5,
 			restitution:0.4,	
 		},
-		"sodacan":{
+		"crate4":{
 			shape:"rectangle",
 			fullHealth:80,
 			width:40,
@@ -640,7 +640,7 @@ var entities = {
 			friction:0.5,
 			restitution:0.7,	
 		},
-		"fries":{
+		"crate2":{
 			shape:"rectangle",
 			fullHealth:50,
 			width:40,
@@ -649,7 +649,7 @@ var entities = {
 			friction:0.5,
 			restitution:0.6,	
 		},
-		"pizza":{
+		"crate3":{
 			shape:"rectangle",
 			fullHealth:60,
 			width:40,
@@ -658,31 +658,38 @@ var entities = {
 			friction:0.5,
 			restitution:0.5,	
 		},
-		"apple":{
+		"ball1":{
 			shape:"circle",
 			radius:25,
 			density:1.5,
 			friction:0.5,
 			restitution:0.4,	
 		},
-		"orange":{
+		"ball2":{
 			shape:"circle",
 			radius:25,
 			density:1.5,
 			friction:0.5,
 			restitution:0.4,	
 		},
-		"strawberry":{
+		"ball4":{
 			shape:"circle",
 			radius:15,
 			density:2.0,
 			friction:0.5,
 			restitution:0.4,	
 		},
-		"watermelon":{
+		"ball5":{
 			shape:"circle",
 			radius:30,
 			density:1.8,
+			friction:0.5,
+			restitution:0.4,	
+		},
+		"ball3":{
+			shape:"circle",
+			radius:25,
+			density:1.5,
 			friction:0.5,
 			restitution:0.4,	
 		},
