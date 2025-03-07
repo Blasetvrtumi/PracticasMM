@@ -95,19 +95,19 @@ var game = {
 		}
 	},
 	showLevelScreen:function(){
+		game.stopGame();
 		$('.gamelayer').hide();
 		$('#levelselectscreen').show('slow');
-		game.stopBackgroundMusic();
 	},
 	showStartScreen:function(){
+		game.stopGame();
 		$('.gamelayer').hide();
 		$('#gamestartscreen').show('slow');
-		game.stopBackgroundMusic();
 	},
 	showSettingsScreen: function() {
+		game.stopGame();
 		$('.gamelayer').hide();
 		$('#settingsscreen').show('slow');
-		game.stopBackgroundMusic();
 		// Actualizar el estado del checkbox basado en la configuración actual
 		$('#debugToggle').prop('checked', this.showDebug);
 	},
@@ -413,7 +413,26 @@ var game = {
 		game.context.lineTo(game.slingshotX-game.offsetLeft +10,game.slingshotY+30)
 		game.context.stroke();
 	},
-
+	stopGame: function() {
+		// Detener el bucle de animación
+		if (game.animationFrame) {
+			window.cancelAnimationFrame(game.animationFrame);
+			game.animationFrame = undefined;
+		}
+		
+		// Detener la simulación física
+		if (box2d.world) {
+			// Destruir todos los cuerpos en el mundo
+			for (var body = box2d.world.GetBodyList(); body; body = body.GetNext()) {
+				box2d.world.DestroyBody(body);
+			}
+			// Destruir el mundo
+			box2d.world = undefined;
+		}
+		
+		// Detener la música
+		game.stopBackgroundMusic();
+	},
 }
 
 var levels = {
