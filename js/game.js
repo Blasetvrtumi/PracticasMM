@@ -72,6 +72,11 @@ var game = {
 		// Cargar preferencias guardadas
 		this.showDebug = localStorage.getItem('showDebug') === 'true';
 		$('#debugcanvas').toggle(this.showDebug);
+		
+		// Cargar volumen guardado
+		this.volume = localStorage.getItem('gameVolume') || 100;
+		$('#volumeSlider').val(this.volume);
+		this.setVolume(this.volume);
 	},	  
 	startBackgroundMusic:function(){
 		var toggleImage = $("#togglemusic")[0];	
@@ -105,8 +110,7 @@ var game = {
 		$('#gamestartscreen').show('slow');
 	},
 	showSettingsScreen: function() {
-		game.stopGame();
-		$('.gamelayer').hide();
+		// No detener el juego, solo mostrar la pantalla de ajustes
 		$('#settingsscreen').show('slow');
 		// Actualizar el estado del checkbox basado en la configuración actual
 		$('#debugToggle').prop('checked', this.showDebug);
@@ -433,6 +437,31 @@ var game = {
 		// Detener la música
 		game.stopBackgroundMusic();
 	},
+	setVolume: function(value) {
+		this.volume = value;
+		localStorage.setItem('gameVolume', value);
+		
+		// Convertir el valor de 0-100 a 0-1
+		const volume = value / 100;
+		
+		// Aplicar volumen a todos los sonidos
+		if (game.backgroundMusic) {
+			game.backgroundMusic.volume = volume;
+		}
+		if (game.slingshotReleasedSound) {
+			game.slingshotReleasedSound.volume = volume;
+		}
+		if (game.bounceSound) {
+			game.bounceSound.volume = volume;
+		}
+		if (game.breakSound) {
+			for (let sound in game.breakSound) {
+				if (game.breakSound[sound]) {
+					game.breakSound[sound].volume = volume;
+				}
+			}
+		}
+	}
 }
 
 var levels = {
