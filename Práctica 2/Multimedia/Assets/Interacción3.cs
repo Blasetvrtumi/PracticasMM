@@ -1,37 +1,28 @@
 using UnityEngine;
 
-public class BotonesRA : MonoBehaviour
+public class BotonTeletransportador : MonoBehaviour
 {
-    public GameObject gorro;
-    public GameObject mochila;
+    public GameObject objetoControlado;
 
-    private Camera cam;
+    private bool visible = true;
+    private Vector3 posicionOriginal;
 
-    void Start()
+    void OnMouseDown()
     {
-        cam = Camera.main;
-    }
+        visible = !visible;
 
-    void Update()
-    {
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        if (objetoControlado != null)
         {
-            Ray ray = cam.ScreenPointToRay(Input.GetTouch(0).position);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit))
+            if (visible)
             {
-                string nombre = hit.transform.name;
-
-                if (nombre.Contains("BotonGorro"))
-                {
-                    gorro.SetActive(!gorro.activeSelf);
-                    Debug.Log("Gorro toggled: " + gorro.activeSelf);
-                }
-                else if (nombre.Contains("BotonMochila"))
-                {
-                    mochila.SetActive(!mochila.activeSelf);
-                }
+                // Restaurar la posición original
+                objetoControlado.transform.localPosition = posicionOriginal;
+            }
+            else
+            {
+                posicionOriginal = objetoControlado.transform.localPosition;
+                // Mandarlo lejos sin romper jerarquía ni animaciones
+                objetoControlado.transform.localPosition = new Vector3(9999, 9999, 9999);
             }
         }
     }
