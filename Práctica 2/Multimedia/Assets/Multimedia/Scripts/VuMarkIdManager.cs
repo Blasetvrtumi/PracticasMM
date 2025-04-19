@@ -127,11 +127,11 @@ public class VuMarkIdManager : MonoBehaviour
             switch (vuMarkIdNumeric)
             {
                 case 1:
-                    return "Cubo - Amarillo";
+                    return "Taza";
                 case 2:
-                    return "Esfera - Azul";
+                    return "Arbol";
                 case 3:
-                    return "Cilindro - Rojo";
+                    return "Coche";
                 default:
                     return "-ERROR-";
             }
