@@ -202,7 +202,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 496537746}
+      - m_Target: {fileID: 633500734}
         m_TargetAssemblyTypeName: JumpScript, Assembly-CSharp
         m_MethodName: OnButtonPress
         m_Mode: 1
@@ -1156,54 +1156,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &496537744
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 496537745}
-  - component: {fileID: 496537746}
-  m_Layer: 0
-  m_Name: Product Controller
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &496537745
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 496537744}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.033794165, y: 0.7699559, z: -0.15353721}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 633500727}
-  m_Father: {fileID: 604436548}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &496537746
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 496537744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 278caff52e0878c409cdc1e72c0285ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  planeFinder: {fileID: 496537744}
-  jumpHeight: 1
-  jumpDuration: 0.5
 --- !u!1 &604436547
 GameObject:
   m_ObjectHideFlags: 0
@@ -1236,7 +1188,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 496537745}
+  - {fileID: 633500727}
   m_Father: {fileID: 1827808415}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &604436549
@@ -1336,6 +1288,7 @@ GameObject:
   - component: {fileID: 633500731}
   - component: {fileID: 633500732}
   - component: {fileID: 633500733}
+  - component: {fileID: 633500734}
   m_Layer: 0
   m_Name: Product
   m_TagString: Untagged
@@ -1352,13 +1305,13 @@ Transform:
   m_GameObject: {fileID: 633500726}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.033794165, y: -0.66995585, z: 0.15353721}
+  m_LocalPosition: {x: 0, y: 0.100000024, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1649018166}
   - {fileID: 1543253063}
-  m_Father: {fileID: 496537745}
+  m_Father: {fileID: 604436548}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &633500728
 MeshRenderer:
@@ -1559,6 +1512,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &633500734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633500726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 278caff52e0878c409cdc1e72c0285ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetObject: {fileID: 633500726}
+  jumpHeight: 0.1
+  jumpDuration: 0.25
+  bounceFactor: 0.25
 --- !u!1 &1311482527
 GameObject:
   m_ObjectHideFlags: 0
