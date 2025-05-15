@@ -324,6 +324,61 @@
 			</div>
 		</div>
 	</section>
+
+	<section class="ftco-section postal-section bg-light">
+		<div class="container">
+		  <div class="row block-9">
+			<div class="col-md-6 d-flex">
+			  <div id="postalPreview" class="text-content d-flex align-items-center justify-content-center" style="width: 100%; min-height: 400px; background-size: cover; background-position: center; position: relative;">
+				<div id="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: none;"></div>
+				<h2 class="mb-4" style="color: #1a472a; font-weight: 700; font-family: 'Poppins', sans-serif; position: relative; z-index: 1;">Envía tu postal</h2>
+			  </div>
+			</div>
+			<div class="col-md-6 order-md-last d-flex">
+			  <form action="#" class="bg-light p-5 contact-form" aria-label="Formulario de envío de postal">
+				<div class="form-group">
+				  <label for="nombre">Nombre</label>
+				  <input type="text" class="form-control" id="nombre" placeholder="Tu nombre" aria-required="true" required>
+				</div>
+				<div class="form-group">
+				  <label for="email">Email</label>
+				  <input type="email" class="form-control" id="email" placeholder="Tu email" aria-required="true" required>
+				</div>
+				<div class="form-group">
+				  <label for="destinatario">Destinatario</label>
+				  <input type="text" class="form-control" id="destinatario" placeholder="Nombre del destinatario" aria-required="true" required>
+				</div>
+				<div class="form-group">
+				  <label for="mensaje">Mensaje</label>
+				  <textarea name="mensaje" id="mensaje" cols="30" rows="4" class="form-control" placeholder="Tu mensaje" aria-required="true" required></textarea>
+				</div>
+				<div class="form-group">
+				  <label for="imagen">Selecciona una imagen</label>
+				  <div class="custom-file">
+					<select class="form-control" id="imagen" aria-required="true" required>
+					  <option value="">Selecciona una imagen del sitio</option>
+					  <option value="bg_1.jpg">Termas al atardecer</option>
+					  <option value="bg_2.jpg">Piscina principal</option>
+					  <option value="destination-1.jpg">Vista panorámica 1</option>
+					  <option value="destination-2.jpg">Vista panorámica 2</option>
+					  <option value="destination-3.jpg">Vista panorámica 3</option>
+					  <option value="custom">Subir mi propia imagen</option>
+					</select>
+				  </div>
+				</div>
+				<div class="form-group" id="customImageUpload" style="display: none;">
+				  <label for="customImage">Sube tu imagen</label>
+				  <input type="file" class="form-control" id="customImage" accept="image/*">
+				</div>
+				<div class="form-group">
+				  <input type="submit" value="Enviar Postal" class="btn btn-primary py-3 px-5">
+				</div>
+			  </form>
+			</div>
+		  </div>
+		</div>
+	</section>
+	
 	</main>
 	<footer class="ftco-footer bg-bottom" style="background-image: url(images/footer-bg.jpg);" role="contentinfo">
 		<div class="container">
@@ -427,6 +482,51 @@
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 	<script src="js/google-map.js"></script>
 	<script src="js/main.js"></script>
+
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			const imageSelect = document.getElementById('imagen');
+			const customImageUpload = document.getElementById('customImageUpload');
+			const customImageInput = document.getElementById('customImage');
+			const postalPreview = document.getElementById('postalPreview');
+			const previewTitle = postalPreview.querySelector('h2');
+			const overlay = document.getElementById('overlay');
+
+			imageSelect.addEventListener('change', function() {
+				if (this.value === 'custom') {
+					customImageUpload.style.display = 'block';
+					customImageInput.setAttribute('required', 'required');
+					postalPreview.style.backgroundImage = 'none';
+					previewTitle.style.color = '#1a472a';
+					overlay.style.display = 'none';
+				} else if (this.value) {
+					customImageUpload.style.display = 'none';
+					customImageInput.removeAttribute('required');
+					postalPreview.style.backgroundImage = `url('images/${this.value}')`;
+					previewTitle.style.color = '#ffffff';
+					overlay.style.display = 'block';
+				} else {
+					customImageUpload.style.display = 'none';
+					customImageInput.removeAttribute('required');
+					postalPreview.style.backgroundImage = 'none';
+					previewTitle.style.color = '#1a472a';
+					overlay.style.display = 'none';
+				}
+			});
+
+			customImageInput.addEventListener('change', function() {
+				if (this.files && this.files[0]) {
+					const reader = new FileReader();
+					reader.onload = function(e) {
+						postalPreview.style.backgroundImage = `url('${e.target.result}')`;
+						previewTitle.style.color = '#ffffff';
+						overlay.style.display = 'block';
+					}
+					reader.readAsDataURL(this.files[0]);
+				}
+			});
+		});
+	</script>
 
 </body>
 
