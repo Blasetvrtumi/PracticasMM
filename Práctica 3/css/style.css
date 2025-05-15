@@ -9464,10 +9464,10 @@ textarea.form-control {
     stroke-dashoffset: 0; }
   50% {
     stroke-dasharray: 89, 200;
-    stroke-dashoffset: -35px; }
+    stroke-dashoffset: -35; }
   100% {
     stroke-dasharray: 89, 200;
-    stroke-dashoffset: -136px; } }
+    stroke-dashoffset: -136; } }
 
 @keyframes loader-dash {
   0% {
@@ -9475,7 +9475,7 @@ textarea.form-control {
     stroke-dashoffset: 0; }
   50% {
     stroke-dasharray: 89, 200;
-    stroke-dashoffset: -35px; }
+    stroke-dashoffset: -35; }
   100% {
     stroke-dasharray: 89, 200;
-    stroke-dashoffset: -136px; } }
+    stroke-dashoffset: -136; } }

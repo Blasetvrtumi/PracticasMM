@@ -293,7 +293,7 @@
 			<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"
 				data-scrollax-parent="true">
 				<div class="col-md-9 text text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-					<a href="https://www.youtube.com/watch?v=pSAZ_4Uhahs"
+					<a href="https://www.youtube.com/watch?v=MEWKKRzx0c0"
 						class="icon-video popup-vimeo d-flex align-items-center justify-content-center mb-4"
 						aria-label="Ver video de presentación">
 						<span class="ion-ios-play" aria-hidden="true"></span>
@@ -418,6 +418,7 @@
 			  <div id="postalPreview" class="text-content d-flex align-items-center justify-content-center" style="width: 100%; min-height: 400px; background-size: cover; background-position: center; position: relative;">
 				<div id="overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); display: none;"></div>
 				<h2 class="mb-4" style="color: #1a472a; font-weight: 700; font-family: 'Poppins', sans-serif; position: relative; z-index: 1;">Envía tu postal</h2>
+				<div id="imageDescription" style="position: absolute; bottom: 20px; left: 20px; right: 20px; background: rgba(0,0,0,0.7); color: white; padding: 15px; border-radius: 8px; display: none; z-index: 2; transition: opacity 0.3s ease;"></div>
 			  </div>
 			</div>
 			<div class="col-md-6 order-md-last d-flex">
@@ -499,6 +500,15 @@
 						Copyright &copy;
 						<script>document.write(new Date().getFullYear());</script> Todos los derechos reservados.
 					</p>
+					<p class="mt-3">
+						<a href="https://www.w3.org/WAI/WCAG2AAA-Conformance"
+						   title="Explanation of WCAG 2 Level AAA conformance">
+						  <img height="32" width="88"
+							   src="https://www.w3.org/WAI/WCAG22/wcag2.2AAA"
+							   alt="Level AAA conformance,
+									W3C WAI Web Content Accessibility Guidelines 2.2">
+						</a>
+					</p>
 				</div>
 			</div>
 		</div>
@@ -543,21 +553,44 @@
 			const postalPreview = document.getElementById('postalPreview');
 			const previewTitle = postalPreview.querySelector('h2');
 			const overlay = document.getElementById('overlay');
+			const imageDescription = document.getElementById('imageDescription');
 			const postalForm = document.querySelector('.contact-form');
+
+			// Definir las descripciones de las imágenes
+			const imageDescriptions = {
+				'bg_1.jpg': 'Una impresionante vista de nuestras termas al atardecer, donde los colores del cielo se reflejan en las aguas termales.',
+				'bg_2.jpg': 'Nuestra piscina principal, un oasis de tranquilidad rodeado de naturaleza y comodidades de lujo.',
+				'destination-1.jpg': 'Vista panorámica de nuestras instalaciones exteriores, perfecta para disfrutar del aire libre y la naturaleza.',
+				'destination-2.jpg': 'Una perspectiva exterior de nuestras termas, combinando arquitectura moderna con elementos naturales.',
+				'destination-3.jpg': 'Un rincón especial de nuestras instalaciones, donde la paz y la serenidad se encuentran en cada detalle.'
+			};
 
 			// Manejar el envío del formulario
 			postalForm.addEventListener('submit', function(e) {
-				e.preventDefault(); // Prevenir el comportamiento por defecto
-				
-				// Crear y reproducir el sonido
+				e.preventDefault();
 				const sound = new Audio('sounds/sent.wav');
 				sound.play().then(() => {
-					// Mostrar el mensaje de alerta después de que el sonido comience a reproducirse
 					alert('Postal Enviada');
 				}).catch(error => {
-					// Si hay algún error con el sonido, mostrar el alert de todos modos
 					alert('Postal Enviada');
 				});
+			});
+
+			// Manejar el hover sobre la vista previa
+			postalPreview.addEventListener('mouseenter', function() {
+				if (imageSelect.value && imageSelect.value !== 'custom') {
+					previewTitle.style.display = 'none';
+					overlay.style.display = 'none';
+					imageDescription.style.display = 'none';
+				}
+			});
+
+			postalPreview.addEventListener('mouseleave', function() {
+				if (imageSelect.value && imageSelect.value !== 'custom') {
+					previewTitle.style.display = 'block';
+					overlay.style.display = 'block';
+					imageDescription.style.display = 'block';
+				}
 			});
 
 			imageSelect.addEventListener('change', function() {
@@ -566,19 +599,26 @@
 					customImageInput.setAttribute('required', 'required');
 					postalPreview.style.backgroundImage = 'none';
 					previewTitle.style.color = '#1a472a';
+					previewTitle.style.display = 'block';
 					overlay.style.display = 'none';
+					imageDescription.style.display = 'none';
 				} else if (this.value) {
 					customImageUpload.style.display = 'none';
 					customImageInput.removeAttribute('required');
 					postalPreview.style.backgroundImage = `url('images/${this.value}')`;
 					previewTitle.style.color = '#ffffff';
+					previewTitle.style.display = 'block';
 					overlay.style.display = 'block';
+					imageDescription.textContent = imageDescriptions[this.value] || '';
+					imageDescription.style.display = 'block';
 				} else {
 					customImageUpload.style.display = 'none';
 					customImageInput.removeAttribute('required');
 					postalPreview.style.backgroundImage = 'none';
 					previewTitle.style.color = '#1a472a';
+					previewTitle.style.display = 'block';
 					overlay.style.display = 'none';
+					imageDescription.style.display = 'none';
 				}
 			});
 
@@ -588,7 +628,10 @@
 					reader.onload = function(e) {
 						postalPreview.style.backgroundImage = `url('${e.target.result}')`;
 						previewTitle.style.color = '#ffffff';
+						previewTitle.style.display = 'block';
 						overlay.style.display = 'block';
+						imageDescription.textContent = 'Tu imagen personalizada';
+						imageDescription.style.display = 'block';
 					}
 					reader.readAsDataURL(this.files[0]);
 				}
