@@ -6,6 +6,9 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
+	<link rel="icon" href="termoia-icon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="termoia-icon.ico" type="image/x-icon">
+
 	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -60,6 +63,42 @@
 			display: inline-flex;
 			align-items: center;
 			height: 60px;
+		}
+
+		.text-size-controls {
+			display: flex;
+			align-items: center;
+			margin-left: 1rem;
+			gap: 0.5rem;
+			background-color: rgba(128, 128, 128, 0.2);
+			padding: 0.25rem 0.75rem;
+			border-radius: 50px;
+			height: 32px;
+		}
+
+		.text-size-controls button {
+			background: none;
+			border: none;
+			color: #1a472a;
+			font-size: 1.1rem;
+			cursor: pointer;
+			padding: 0.15rem 0.35rem;
+			border-radius: 4px;
+			transition: all 0.3s ease;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			min-width: 28px;
+			height: 24px;
+		}
+
+		.text-size-controls button:hover {
+			background-color: rgba(26, 71, 42, 0.1);
+		}
+
+		.text-size-controls button:focus-visible {
+			outline: 2px solid #007067;
+			outline-offset: 2px;
 		}
 
 		.nav-pill-container .nav-item {
@@ -255,6 +294,122 @@
 			color: #ffffff !important;
 			text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 		}
+
+		/* Clase para elementos que deben mantener su tamaño relativo */
+		.keep-relative-size {
+			font-size: inherit !important;
+		}
+
+		/* Asegurar que todos los elementos de texto usen unidades relativas */
+		body {
+			font-size: 16px;
+		}
+
+		/* Convertir tamaños fijos a unidades relativas */
+		.text-overlay h1 {
+			font-size: 2.5rem;
+		}
+
+		.text-overlay .caps {
+			font-size: 1.2rem;
+		}
+
+		.nav-pill-container .nav-link {
+			font-size: 1rem;
+		}
+
+		.ftco-footer-widget h2 {
+			font-size: 1.5rem;
+		}
+
+		.ftco-footer-widget p {
+			font-size: 1rem;
+		}
+
+		.block-23 .text {
+			font-size: 1rem;
+		}
+
+		.ftco-footer-social li a {
+			font-size: 1.2rem;
+		}
+
+		/* Asegurar que los botones de control de texto mantengan su tamaño relativo */
+		.text-size-controls button {
+			font-size: 1.1rem !important;
+		}
+
+		/* Estilos para elementos sr-only */
+		.sr-only {
+			position: absolute;
+			width: 1px;
+			height: 1px;
+			padding: 0;
+			margin: -1px;
+			overflow: hidden;
+			clip: rect(0, 0, 0, 0);
+			white-space: nowrap;
+			border: 0;
+			background-color: #ffffff;
+			color: #000000;
+		}
+
+		.sr-only:focus {
+			position: static;
+			width: auto;
+			height: auto;
+			padding: 0.5rem;
+			margin: 0;
+			overflow: visible;
+			clip: auto;
+			white-space: normal;
+			background-color: #ffffff;
+			color: #000000;
+			border: 2px solid #007067;
+			border-radius: 4px;
+			z-index: 1000;
+		}
+
+		/* Estilos específicos para el texto sr-only del video */
+		.icon-video .sr-only:focus {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background-color: rgba(0, 0, 0, 0.8);
+			color: #000000 !important;
+			padding: 1rem;
+			border-radius: 8px;
+			text-align: center;
+			min-width: 200px;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+		}
+
+		.icon-video {
+			width: 100px;
+			height: 100px;
+			background: #004441;
+			margin: 0 auto;
+			-webkit-animation: pulse 2s infinite;
+			animation: pulse 2s infinite;
+			-webkit-border-radius: 50%;
+			-moz-border-radius: 50%;
+			-ms-border-radius: 50%;
+			border-radius: 50%;
+		}
+
+		.icon-video span {
+			color: #fff;
+			font-size: 2.5rem;
+		}
+		.text-black {
+			color: #000000 !important;
+		}
+
+		p {
+			color: #444444;
+		}
+
 	</style>
 </head>
 
@@ -276,6 +431,11 @@
 								<li class="nav-item active"><a href="index.html" class="nav-link" aria-current="page">Inicio</a></li>
 								<li class="nav-item"><a href="#footer" class="nav-link">Acerca de</a></li>
 							</ul>
+							<div class="text-size-controls" role="group" aria-label="Control de tamaño de texto">
+								<button type="button" id="decreaseText" aria-label="Reducir tamaño de texto" title="Reducir tamaño de texto">A-</button>
+								<button type="button" id="resetText" aria-label="Restablecer tamaño de texto" title="Restablecer tamaño de texto">A</button>
+								<button type="button" id="increaseText" aria-label="Aumentar tamaño de texto" title="Aumentar tamaño de texto">A+</button>
+							</div>
 						</div>
 					</li>
 					<li class="nav-item cta"><a href="#postal-section" class="nav-link">Enviar una postal</a></li>
@@ -289,6 +449,7 @@
 	<div class="hero-wrap js-fullheight" style="background-image: url('images/bg_2.jpg');"
 		data-stellar-background-ratio="0.5">
 		<div class="overlay" aria-hidden="true"></div>
+		<span class="sr-only">Vista panorámica de las termas con piscinas termales y montañas al fondo</span>
 		<div class="container">
 			<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"
 				data-scrollax-parent="true">
@@ -297,7 +458,7 @@
 						class="icon-video popup-vimeo d-flex align-items-center justify-content-center mb-4"
 						aria-label="Ver video de presentación">
 						<span class="ion-ios-play" aria-hidden="true"></span>
-						<span class="sr-only">Ver video de presentación</span>
+						<span class="sr-only text-black">Ver video de presentación</span>
 					</a>
 					<div class="text-overlay">
 						<p class="caps" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Vive una experiencia
@@ -370,7 +531,7 @@
 		<div class="container">
 			<div class="row d-flex">
 				<div class="col-md-6 d-flex">
-					<img src="images/about.jpg" alt="Grupo de personas relajándose en las piscinas termales." class="img-fluid align-self-stretch" style="width: 100%; height: 100%; object-fit: cover;">
+					<img src="images/about.jpg" alt="Persona remando en uno de nuestros lagos termales." class="img-fluid align-self-stretch" style="width: 100%; height: 100%; object-fit: cover;">
 				</div>
 				<div class="col-md-6 pl-md-5 py-5">
 					<h2 class="mb-4">Celebramos los 25 años</h2>
@@ -425,15 +586,15 @@
 			  <form action="#" class="bg-light p-5 contact-form" aria-label="Formulario de envío de postal">
 				<div class="form-group">
 				  <label for="nombre">Nombre</label>
-				  <input type="text" class="form-control" id="nombre" placeholder="Tu nombre" aria-required="true" required>
+				  <input type="text" class="form-control" id="nombre" placeholder="Tu nombre" aria-required="true" required autocomplete="given-name">
 				</div>
 				<div class="form-group">
 				  <label for="email">Email</label>
-				  <input type="email" class="form-control" id="email" placeholder="Tu email" aria-required="true" required>
+				  <input type="email" class="form-control" id="email" placeholder="Tu email" aria-required="true" required autocomplete="email">
 				</div>
 				<div class="form-group">
 				  <label for="destinatario">Destinatario</label>
-				  <input type="text" class="form-control" id="destinatario" placeholder="Nombre del destinatario" aria-required="true" required>
+				  <input type="text" class="form-control" id="destinatario" placeholder="Nombre del destinatario" aria-required="true" required autocomplete="name">
 				</div>
 				<div class="form-group">
 				  <label for="mensaje">Mensaje</label>
@@ -468,6 +629,7 @@
 	
 	</main>
 	<footer class="ftco-footer bg-bottom" id="footer" style="background-image: url(images/footer-bg.jpg);" role="contentinfo">
+		<span class="sr-only">Vista panorámica de las instalaciones de las termas al atardecer</span>
 		<div class="container">
 			<div class="row mb-5">
 				<div class="col-md-6">
@@ -487,8 +649,8 @@
 						<div class="block-23 mb-3">
 							<ul>
 								<li><span class="icon icon-map-marker"></span><span class="text">Calle Principal 123, 28001 Madrid, España</span></li>
-								<li><a href="#"><span class="icon icon-phone"></span><span class="text">+34 91 123 45 67</span></a></li>
-								<li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@termoia.com</span></a></li>
+								<li><a href="#" style="text-decoration: underline;"><span class="icon icon-phone"></span><span class="text">+34 91 123 45 67</span></a></li>
+								<li><a href="#" style="text-decoration: underline;"><span class="icon icon-envelope"></span><span class="text">info@termoia.com</span></a></li>
 							</ul>
 						</div>
 					</div>
@@ -501,12 +663,18 @@
 						<script>document.write(new Date().getFullYear());</script> Todos los derechos reservados.
 					</p>
 					<p class="mt-3">
+						<a href="https://www.w3.org/WAI/WCAG2AA-Conformance"
+						   title="Explanation of WCAG 2 Level AA conformance">
+						  <img height="32" width="88"
+							   src="https://www.w3.org/WAI/WCAG22/wcag2.2AA"
+							   alt="Level AA conformance,
+									W3C WAI Web Content Accessibility Guidelines 2.2">
+						</a>
 						<a href="https://www.w3.org/WAI/WCAG2AAA-Conformance"
 						   title="Explanation of WCAG 2 Level AAA conformance">
 						  <img height="32" width="88"
 							   src="https://www.w3.org/WAI/WCAG22/wcag2.2AAA"
-							   alt="Level AAA conformance,
-									W3C WAI Web Content Accessibility Guidelines 2.2">
+							   alt="Nivel AAA de conformidad con las Directrices de Accesibilidad para el Contenido Web 2.2 del W3C WAI">
 						</a>
 					</p>
 				</div>
@@ -634,6 +802,53 @@
 						imageDescription.style.display = 'block';
 					}
 					reader.readAsDataURL(this.files[0]);
+				}
+			});
+
+			// Funcionalidad para el control de tamaño de texto
+			const decreaseTextBtn = document.getElementById('decreaseText');
+			const resetTextBtn = document.getElementById('resetText');
+			const increaseTextBtn = document.getElementById('increaseText');
+			const html = document.documentElement;
+			
+			// Definir el tamaño base del texto (16px es el valor por defecto en la mayoría de navegadores)
+			const DEFAULT_FONT_SIZE = 16;
+			let currentFontSize = DEFAULT_FONT_SIZE;
+			
+			// Función para actualizar el tamaño del texto
+			function updateFontSize(newSize) {
+				currentFontSize = newSize;
+				html.style.fontSize = `${currentFontSize}px`;
+				
+				// Actualizar también el tamaño base del body
+				document.body.style.fontSize = `${currentFontSize}px`;
+				
+				// Guardar la preferencia en localStorage
+				localStorage.setItem('preferredFontSize', currentFontSize);
+			}
+			
+			// Cargar la preferencia guardada o usar el valor por defecto
+			const savedFontSize = localStorage.getItem('preferredFontSize');
+			if (savedFontSize) {
+				updateFontSize(parseFloat(savedFontSize));
+			} else {
+				updateFontSize(DEFAULT_FONT_SIZE);
+			}
+			
+			// Event listeners para los botones
+			decreaseTextBtn.addEventListener('click', () => {
+				if (currentFontSize > 12) { // Tamaño mínimo
+					updateFontSize(currentFontSize - 2);
+				}
+			});
+			
+			resetTextBtn.addEventListener('click', () => {
+				updateFontSize(DEFAULT_FONT_SIZE);
+			});
+			
+			increaseTextBtn.addEventListener('click', () => {
+				if (currentFontSize < 24) { // Tamaño máximo
+					updateFontSize(currentFontSize + 2);
 				}
 			});
 		});
