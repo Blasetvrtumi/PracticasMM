@@ -28,6 +28,88 @@
 	<link rel="stylesheet" href="css/flaticon.css">
 	<link rel="stylesheet" href="css/icomoon.css">
 	<link rel="stylesheet" href="css/style.css">
+	<style>
+		.navbar-nav{
+			margin: 0 0.5rem;
+			display: flex;
+			align-items: center;
+		}
+		.text-overlay {
+			background-color: rgba(255, 255, 255, 0.85);
+			padding: 2rem;
+			border-radius: 15px;
+			margin: 1rem 0
+		}
+
+		.text-overlay .caps {
+			color: #1a472a;
+			font-weight: 600;
+			margin-bottom: 1rem
+		}
+
+		.text-overlay h1 {
+			color: #1a472a;
+			font-weight: 700
+		}
+
+		.nav-pill-container {
+			background-color: rgba(255, 255, 255, 0.85);
+			padding: 0.5rem 1.5rem;
+			border-radius: 50px;
+			margin: 0.5rem 0.5rem;
+			display: inline-flex;
+			align-items: center;
+			height: 60px;
+		}
+
+		.nav-pill-container .nav-item {
+			display: inline-block;
+			align-self: center;
+		}
+
+		.nav-pill-container .nav-link {
+			color: #1a472a !important;
+			font-weight: 500 !important;
+			padding: 0.5rem 1rem !important;
+			line-height: 1;
+		}
+
+		.nav-pill-container .nav-link:hover {
+			color: #2a573a !important;
+		}
+
+		.nav-pill-container .nav-item.active .nav-link {
+			color: #1a472a !important;
+			font-weight: 600;
+		}
+
+		.nav-item.cta {
+			display: flex;
+			align-items: center;
+			height: 60px;
+		}
+
+		.nav-item.cta .nav-link {
+			height: 100%;
+			display: flex;
+			align-items: center;
+			padding: 0 1.5rem !important;
+		}
+
+		.nav-link{
+			margin-top: 0rem !important;
+			border-radius: 50px !important;
+		}
+
+		.nav-item.cta .nav-link:hover {
+			color: #2a573a !important;
+			background-color: rgba(255, 255, 255, 0.85) !important;
+		}
+
+		select option {
+			color: black;
+		}
+	</style>
 </head>
 
 <body>
@@ -42,9 +124,15 @@
 
 			<div class="collapse navbar-collapse" id="ftco-nav">
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item active"><a href="index.html" class="nav-link" aria-current="page">Inicio</a></li>
-					<li class="nav-item"><a href="about.html" class="nav-link">Acerca de</a></li>
-					<li class="nav-item"><a href="contact.html" class="nav-link">Contacto</a></li>
+					<li class="nav-item">
+						<div class="nav-pill-container">
+							<ul class="nav list-unstyled">
+								<li class="nav-item active"><a href="index.html" class="nav-link" aria-current="page">Inicio</a></li>
+								<li class="nav-item"><a href="about.html" class="nav-link">Acerca de</a></li>
+								<li class="nav-item"><a href="contact.html" class="nav-link">Contacto</a></li>
+							</ul>
+						</div>
+					</li>
 					<li class="nav-item cta"><a href="#" class="nav-link">Reservar</a></li>
 				</ul>
 			</div>
@@ -54,7 +142,7 @@
 
 	<main id="main-content">
 	<div class="hero-wrap js-fullheight" style="background-image: url('images/bg_2.jpg');"
-		data-stellar-background-ratio="0.5" aria-label="Imagen de fondo de termas">
+		data-stellar-background-ratio="0.5">
 		<div class="overlay" aria-hidden="true"></div>
 		<div class="container">
 			<div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center"
@@ -62,13 +150,16 @@
 				<div class="col-md-9 text text-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
 					<a href="https://www.youtube.com/watch?v=pSAZ_4Uhahs"
 						class="icon-video popup-vimeo d-flex align-items-center justify-content-center mb-4"
-						label="Ver video de presentación">
+						aria-label="Ver video de presentación">
 						<span class="ion-ios-play" aria-hidden="true"></span>
+						<span class="sr-only">Ver video de presentación</span>
 					</a>
-					<p class="caps" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Vive una experiencia
-						etérea e inolvidable</p>
-					<h1 data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Visita nuestras termas más
-						sofisticadas</h1>
+					<div class="text-overlay">
+						<p class="caps" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Vive una experiencia
+							etérea e inolvidable</p>
+						<h1 data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Visita nuestras termas más
+							sofisticadas</h1>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -78,12 +169,12 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-					<div class="search-wrap-1 ftco-animate p-4">
+					<div class="search-wrap-1 ftco-animate p-4" style="background-color: rgba(0, 0, 0, 0.7);">
 						<form action="#" class="search-property-1" aria-label="Formulario de búsqueda de reservas">
 							<div class="row">
 								<div class="col-lg align-items-end">
 									<div class="form-group">
-										<label for="fecha">Fecha</label>
+										<label class="text-white" for="fecha">Fecha</label>
 										<div class="form-field">
 											<div class="icon"><span class="ion-ios-calendar" aria-hidden="true"></span></div>
 											<input type="text" id="fecha" class="form-control checkin_date"
@@ -93,11 +184,11 @@
 								</div>
 								<div class="col-lg align-items-end">
 									<div class="form-group">
-										<label for="tarifa">Tarifa</label>
+										<label class="text-white" for="tarifa">Tarifa</label>
 										<div class="form-field">
 											<div class="select-wrap">
 												<div class="icon"><span class="ion-ios-arrow-down" aria-hidden="true"></span></div>
-												<select name="tarifa" id="tarifa" class="form-control" aria-required="true">
+												<select name="tarifa" id="tarifa" class="form-control" aria-required="true" >
 													<option value="">Básica</option>
 													<option value="">Especial</option>
 													<option value="">Premium</option>
@@ -108,7 +199,7 @@
 								</div>
 								<div class="col-lg align-items-end">
 									<div class="form-group">
-										<label for="plazas">Plazas</label>
+										<label class="text-white" for="plazas">Plazas</label>
 										<div class="form-field">
 											<div class="select-wrap">
 												<div class="icon"><span class="ion-ios-arrow-down" aria-hidden="true"></span></div>
@@ -142,7 +233,6 @@
 					<p>Con una historia de más de 20 años, nuestras termas son el lugar ideal para disfrutar de una experiencia única y relajante.
 						La calidad y satisfacción de nuestros clientes son nuestra prioridad y seña de identidad.
 						Con instalaciones modernas y un equipo profesional, garantizamos la mejor atención y servicio.</p>
-					</p>
 					<p><a href="#" class="btn btn-primary py-3 px-4">Search Destination</a></p>
 				</div>
 				<div class="col-md-6">
@@ -154,7 +244,6 @@
 									<h3 class="heading mb-3">Experiencias en pareja</h3>
 									<p>Con nuestras tarjetas de regalo, puedes disfrutar de una experiencia única en pareja
 										en nuestras termas.</p>
-									</p>
 								</div>
 							</div>
 						</div>
@@ -164,7 +253,6 @@
 								<div class="media-body">
 									<h3 class="heading mb-3">Cumpleaños</h3>
 									<p>Tanto niños como adultos pueden disfrutar de una experiencia única en nuestras termas, regala una ahora para un cumpleaños memorable.</p>
-									</p>
 								</div>
 							</div>
 						</div>
@@ -174,7 +262,6 @@
 								<div class="media-body">
 									<h3 class="heading mb-3">Celebraciones empresariales</h3>
 									<p>Dotadas de las mejores instalaciones con restauración y servicios exclusivos a empresas, nuestras termas son el lugar ideal para celebrar eventos.</p>
-									</p>
 								</div>
 							</div>
 						</div>
@@ -184,7 +271,6 @@
 								<div class="media-body">
 									<h3 class="heading mb-3">Eventos privados</h3>
 									<p>Reserva una de nuestras termas para disfrutar de una experiencia única y privada, con todas las comodidades y servicios a tu disposición.</p>
-									</p>
 								</div>
 							</div>
 						</div>
@@ -198,7 +284,7 @@
 		<div class="container">
 			<div class="row d-flex">
 				<div class="col-md-6 d-flex">
-					<div class="img d-flex align-self-stretch" style="background-image:url(images/about.jpg);" label="Personas disfrutando de las termas"></div>
+					<img src="images/about.jpg" alt="Personas disfrutando de las termas" class="img-fluid align-self-stretch" style="width: 100%; height: 100%; object-fit: cover;">
 				</div>
 				<div class="col-md-6 pl-md-5 py-5">
 					<h2 class="mb-4">Celebramos los 25 años</h2>
@@ -232,7 +318,6 @@
 						<div class="col-md-12 heading-section ftco-animate">
 							<p>Asiste al museo de temporada de nuestras termas tematizadas con la historia de nuestras instalaciones y opta
 								por dos entradas gratis para disfrutar de una experiencia única*.</p>
-							</p>
 						</div>
 					</div>
 				</div>
@@ -249,9 +334,9 @@
 						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
 							there live the blind texts.</p>
 						<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-							<li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-							<li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-							<li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+							<li class="ftco-animate"><a href="#" aria-label="Síguenos en Twitter"><span class="icon-twitter"></span><span class="sr-only">Twitter</span></a></li>
+							<li class="ftco-animate"><a href="#" aria-label="Síguenos en Facebook"><span class="icon-facebook"></span><span class="sr-only">Facebook</span></a></li>
+							<li class="ftco-animate"><a href="#" aria-label="Síguenos en Instagram"><span class="icon-instagram"></span><span class="sr-only">Instagram</span></a></li>
 						</ul>
 					</div>
 				</div>
@@ -303,7 +388,7 @@
 					<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 						Copyright &copy;
 						<script>document.write(new Date().getFullYear());</script> All rights reserved | This template
-						is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a
+						is made with <em class="icon-heart color-danger" aria-hidden="true"></em> by <a
 							href="https://colorlib.com" target="_blank">Colorlib</a>
 						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 					</p>

@@ -3107,6 +3107,10 @@ input[type="button"].btn-block {
     transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
     -o-transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    -webkit-transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     transition: transform 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-transform 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out; }
     @media screen and (prefers-reduced-motion: reduce) {
       .custom-switch .custom-control-label::after {
@@ -5293,7 +5297,7 @@ button.bg-light:focus {
 a.bg-dark:hover, a.bg-dark:focus,
 button.bg-dark:hover,
 button.bg-dark:focus {
-  background-color: #1d2124 !important; }
+  background-color: #00332e !important; }
 
 .bg-white {
   background-color: #fff !important; }
@@ -8105,12 +8109,12 @@ h1, h2, h3, h4, h5,
             display: none; } }
     .ftco-navbar-light .navbar-nav > .nav-item.cta > a {
       color: #fff;
-      border: 1px solid #007b74;
+      border: 1px solid #004d40;
       padding-top: .8rem;
       padding-bottom: .8rem;
       padding-left: 18px;
       padding-right: 18px;
-      background: #007b74;
+      background: #004d40;
       margin-top: .5rem;
       -webkit-border-radius: 2px;
       -moz-border-radius: 2px;
@@ -8120,8 +8124,8 @@ h1, h2, h3, h4, h5,
         display: inline-block;
         color: #fff; }
       .ftco-navbar-light .navbar-nav > .nav-item.cta > a:hover {
-        background: #007b74;
-        border: 1px solid #007b74; }
+        background: #00332e;
+        border: 1px solid #00332e; }
     .ftco-navbar-light .navbar-nav > .nav-item.cta.cta-colored a {
       border: 1px solid #ff5959;
       background: #ff5959 !important; }
@@ -8161,7 +8165,7 @@ h1, h2, h3, h4, h5,
       color: #007b74 !important; }
     .ftco-navbar-light.scrolled .nav-item.cta > a {
       color: #fff !important;
-      background: #007b74;
+      background: #004d40;
       border: none !important;
       padding-top: 0.5rem !important;
       padding-bottom: .5rem !important;
@@ -8247,14 +8251,7 @@ h1, h2, h3, h4, h5,
     content: '';
     opacity: .4;
     background: #000000;
-    background: #2f88fc;
-    background: -moz-linear-gradient(45deg, #2f88fc 0%, #ff5959 100%);
-    background: -webkit-gradient(left bottom, right top, color-stop(0%, #2f88fc), color-stop(100%, #ff5959));
-    background: -webkit-linear-gradient(45deg, #2f88fc 0%, #ff5959 100%);
-    background: -o-linear-gradient(45deg, #2f88fc 0%, #ff5959 100%);
-    background: -ms-linear-gradient(45deg, #2f88fc 0%, #ff5959 100%);
-    background: linear-gradient(45deg, #003aad 50%, #59ffb2 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2f88fc', endColorstr='#ff5959', GradientType=1 ); }
+    background: linear-gradient(45deg, #2f88fc 0%, #ff5959 100%); }
   .hero-wrap.hero-wrap-2 .overlay {
     width: 100%;
     opacity: .2; }
@@ -8326,7 +8323,7 @@ h1, h2, h3, h4, h5,
   @media (min-width: 768px) {
     .search-wrap-1 {
       margin-top: -116px; } }
-  @media (min-width: 768px) {
+  @media (max-width: 767.98px) {
     .search-wrap-1.search-wrap-notop {
       margin-top: 0; } }
 
