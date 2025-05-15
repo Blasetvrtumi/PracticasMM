@@ -65,6 +65,7 @@
 		.nav-pill-container .nav-item {
 			display: inline-block;
 			align-self: center;
+			margin: 0 0.5rem;
 		}
 
 		.nav-pill-container .nav-link {
@@ -96,7 +97,7 @@
 			padding: 0 1.5rem !important;
 		}
 
-		.nav-link{
+		.nav-link {
 			margin-top: 0rem !important;
 			border-radius: 50px !important;
 		}
@@ -117,8 +118,8 @@
 		}
 
 		.btn-primary:hover {
-			background-color: #003a35 !important;
-			border-color: #003a35 !important;
+			background-color: #007067 !important;
+			border-color: #00746a !important;
 			color: #fff !important;
 		}
 
@@ -127,10 +128,132 @@
 			font-weight: 500;
 		}
 
+		.search-wrap-1 {
+			background-color: rgba(0, 0, 0, 0.95) !important;
+		}
+
 		.search-wrap-1 .text-white,
 		.search-wrap-1 label.text-white {
-			color: #fff !important;
-			font-weight: 500;
+			color: #ffffff !important;
+			font-weight: 700 !important;
+			text-shadow: none !important;
+			letter-spacing: 0.5px !important;
+		}
+
+		.search-property-1 label {
+			color: #ffffff !important;
+			font-weight: 700 !important;
+			text-shadow: none !important;
+			letter-spacing: 0.5px !important;
+		}
+
+		/* Footer hover effects */
+		.ftco-footer .list-unstyled li a {
+			transition: all 0.3s ease;
+			position: relative;
+		}
+
+		.ftco-footer .list-unstyled li a:hover {
+			color: #ffffff !important;
+			text-decoration: none;
+			padding-left: 5px;
+		}
+
+		.ftco-footer-social li a {
+			transition: all 0.3s ease;
+		}
+
+		.ftco-footer-social li a:hover {
+			background: #ffffff !important;
+			border-color: #ffffff !important;
+			color: #1a472a !important;
+		}
+
+		.ftco-footer .block-23 li a:hover {
+			color: #ffffff !important;
+		}
+
+		/* Estilos para el foco por teclado */
+		:focus-visible {
+			outline: 3px solid #007067 !important;
+			outline-offset: 2px !important;
+			box-shadow: 0 0 0 4px rgba(0, 112, 103, 0.3) !important;
+		}
+
+		/* Estilos específicos para diferentes elementos */
+		.nav-link:focus-visible {
+			background-color: rgba(0, 112, 103, 0.1) !important;
+			border-radius: 50px !important;
+		}
+
+		.btn:focus-visible {
+			background-color: #007067 !important;
+			transform: scale(1.02) !important;
+			transition: transform 0.2s ease !important;
+		}
+
+		input:focus-visible,
+		select:focus-visible,
+		textarea:focus-visible {
+			border-color: #007067 !important;
+			box-shadow: 0 0 0 2px rgba(0, 112, 103, 0.2) !important;
+		}
+
+		/* Estilo para enlaces en el footer */
+		.ftco-footer a:focus-visible {
+			text-decoration: underline !important;
+			background-color: rgba(0, 112, 103, 0.1) !important;
+			padding: 2px 4px !important;
+			border-radius: 3px !important;
+		}
+
+		/* Estilo para iconos sociales */
+		.ftco-footer-social a:focus-visible {
+			background-color: #ffffff !important;
+			color: #1a472a !important;
+			transform: scale(1.1) !important;
+			transition: transform 0.2s ease !important;
+		}
+
+		/* Estilos para los iconos de redes sociales al hacer hover */
+		.ftco-footer-social a:hover .icon-twitter,
+		.ftco-footer-social a:hover .icon-facebook,
+		.ftco-footer-social a:hover .icon-instagram {
+			color: #000000 !important;
+		}
+
+		/* Estilos para los iconos de redes sociales al navegar con teclado */
+		.ftco-footer-social a:focus-visible .icon-twitter,
+		.ftco-footer-social a:focus-visible .icon-facebook,
+		.ftco-footer-social a:focus-visible .icon-instagram {
+			color: #000000 !important;
+		}
+
+		/* Estilos mejorados para etiquetas de formulario */
+		.contact-form label {
+			color: #333333 !important;
+			font-weight: 500 !important;
+		}
+
+		.subscribe-form label {
+			color: #333333 !important;
+			font-weight: 500 !important;
+		}
+
+		/* Asegurar que las etiquetas sean visibles en todos los estados */
+		label:focus-within {
+			color: #007067 !important;
+		}
+
+		/* Mejorar el contraste para etiquetas en fondos claros */
+		.bg-light label {
+			color: #333333 !important;
+		}
+
+		/* Mejorar el contraste para etiquetas en fondos oscuros */
+		[style*="background-color: rgba(0, 0, 0, 0.7)"] label {
+			color: #ffffff !important;
+			text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 		}
 	</style>
 </head>
@@ -155,7 +278,7 @@
 							</ul>
 						</div>
 					</li>
-					<li class="nav-item cta"><a href="#" class="nav-link">Reservar</a></li>
+					<li class="nav-item cta"><a href="#postal-section" class="nav-link">Enviar una postal</a></li>
 				</ul>
 			</div>
 		</div>
@@ -187,64 +310,6 @@
 		</div>
 	</div>
 
-	<section class="ftco-section ftco-no-pb ftco-no-pt">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="search-wrap-1 ftco-animate p-4" style="background-color: rgba(0, 0, 0, 0.7);">
-						<form action="#" class="search-property-1" aria-label="Formulario de búsqueda de reservas">
-							<div class="row">
-								<div class="col-lg align-items-end">
-									<div class="form-group">
-										<label class="text-white" for="fecha">Fecha</label>
-										<div class="form-field">
-											<div class="icon"><span class="ion-ios-calendar" aria-hidden="true"></span></div>
-											<input type="text" id="fecha" class="form-control checkin_date"
-												placeholder="Fecha de entrada" aria-required="true" autocomplete="off">
-										</div>
-									</div>
-								</div>
-								<div class="col-lg align-items-end">
-									<div class="form-group">
-										<label class="text-white" for="tarifa">Tarifa</label>
-										<div class="form-field">
-											<div class="select-wrap">
-												<div class="icon"><span class="ion-ios-arrow-down" aria-hidden="true"></span></div>
-												<select name="tarifa" id="tarifa" class="form-control" aria-required="true" >
-													<option value="">Básica</option>
-													<option value="">Especial</option>
-													<option value="">Premium</option>
-												</select>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg align-items-end">
-									<div class="form-group">
-										<label class="text-white" for="plazas">Plazas</label>
-										<div class="form-field">
-											<div class="select-wrap">
-												<div class="icon"><span class="ion-ios-arrow-down" aria-hidden="true"></span></div>
-												<input type="number" id="plazas" class="form-control" placeholder="Plazas" min="1" aria-required="true">
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-lg align-self-end">
-									<div class="form-group">
-										<div class="form-field">
-											<input type="submit" value="Reservar" class="form-control btn btn-primary">
-										</div>
-									</div>
-								</div>
-							</div>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
 	<section class="ftco-section services-section bg-light">
 		<div class="container">
 			<div class="row d-flex">
@@ -255,7 +320,6 @@
 					<p>Con una historia de más de 20 años, nuestras termas son el lugar ideal para disfrutar de una experiencia única y relajante.
 						La calidad y satisfacción de nuestros clientes son nuestra prioridad y seña de identidad.
 						Con instalaciones modernas y un equipo profesional, garantizamos la mejor atención y servicio.</p>
-					<p><a href="#" class="btn btn-primary py-3 px-4">Search Destination</a></p>
 				</div>
 				<div class="col-md-6">
 					<div class="row">
@@ -306,7 +370,7 @@
 		<div class="container">
 			<div class="row d-flex">
 				<div class="col-md-6 d-flex">
-					<img src="images/about.jpg" alt="Personas disfrutando de las termas" class="img-fluid align-self-stretch" style="width: 100%; height: 100%; object-fit: cover;">
+					<img src="images/about.jpg" alt="Grupo de personas relajándose en las piscinas termales." class="img-fluid align-self-stretch" style="width: 100%; height: 100%; object-fit: cover;">
 				</div>
 				<div class="col-md-6 pl-md-5 py-5">
 					<h2 class="mb-4">Celebramos los 25 años</h2>
@@ -347,7 +411,7 @@
 		</div>
 	</section>
 
-	<section class="ftco-section postal-section bg-light">
+	<section class="ftco-section postal-section bg-light" id="postal-section">
 		<div class="container">
 		  <div class="row block-9">
 			<div class="col-md-6 d-flex">
@@ -405,11 +469,10 @@
 	<footer class="ftco-footer bg-bottom" id="footer" style="background-image: url(images/footer-bg.jpg);" role="contentinfo">
 		<div class="container">
 			<div class="row mb-5">
-				<div class="col-md">
+				<div class="col-md-6">
 					<div class="ftco-footer-widget mb-4">
-						<h2 class="ftco-heading-2">Vacation</h2>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia,
-							there live the blind texts.</p>
+						<h2 class="ftco-heading-2">Termoia</h2>
+						<p>Descubre un oasis de tranquilidad y bienestar en nuestras termas, donde la naturaleza y el lujo se encuentran para crear experiencias inolvidables.</p>
 						<ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
 							<li class="ftco-animate"><a href="#" aria-label="Síguenos en Twitter"><span class="icon-twitter"></span><span class="sr-only">Twitter</span></a></li>
 							<li class="ftco-animate"><a href="#" aria-label="Síguenos en Facebook"><span class="icon-facebook"></span><span class="sr-only">Facebook</span></a></li>
@@ -417,43 +480,14 @@
 						</ul>
 					</div>
 				</div>
-				<div class="col-md">
-					<div class="ftco-footer-widget mb-4 ml-md-5">
-						<h2 class="ftco-heading-2">Infromation</h2>
-						<ul class="list-unstyled">
-							<li><a href="#" class="py-2 d-block">Online Enquiry</a></li>
-							<li><a href="#" class="py-2 d-block">General Enquiries</a></li>
-							<li><a href="#" class="py-2 d-block">Booking Conditions</a></li>
-							<li><a href="#" class="py-2 d-block">Privacy and Policy</a></li>
-							<li><a href="#" class="py-2 d-block">Refund Policy</a></li>
-							<li><a href="#" class="py-2 d-block">Call Us</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-md">
+				<div class="col-md-6">
 					<div class="ftco-footer-widget mb-4">
-						<h2 class="ftco-heading-2">Experience</h2>
-						<ul class="list-unstyled">
-							<li><a href="#" class="py-2 d-block">Adventure</a></li>
-							<li><a href="#" class="py-2 d-block">Hotel and Restaurant</a></li>
-							<li><a href="#" class="py-2 d-block">Beach</a></li>
-							<li><a href="#" class="py-2 d-block">Nature</a></li>
-							<li><a href="#" class="py-2 d-block">Camping</a></li>
-							<li><a href="#" class="py-2 d-block">Party</a></li>
-						</ul>
-					</div>
-				</div>
-				<div class="col-md">
-					<div class="ftco-footer-widget mb-4">
-						<h2 class="ftco-heading-2">Have a Questions?</h2>
+						<h2 class="ftco-heading-2">¿Tienes alguna pregunta?</h2>
 						<div class="block-23 mb-3">
 							<ul>
-								<li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain
-										View, San Francisco, California, USA</span></li>
-								<li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929
-											210</span></a></li>
-								<li><a href="#"><span class="icon icon-envelope"></span><span
-											class="text">info@yourdomain.com</span></a></li>
+								<li><span class="icon icon-map-marker"></span><span class="text">Calle Principal 123, 28001 Madrid, España</span></li>
+								<li><a href="#"><span class="icon icon-phone"></span><span class="text">+34 91 123 45 67</span></a></li>
+								<li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@termoia.com</span></a></li>
 							</ul>
 						</div>
 					</div>
@@ -461,13 +495,9 @@
 			</div>
 			<div class="row">
 				<div class="col-md-12 text-center">
-
-					<p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+					<p>
 						Copyright &copy;
-						<script>document.write(new Date().getFullYear());</script> All rights reserved | This template
-						is made with <em class="icon-heart color-danger" aria-hidden="true"></em> by <a
-							href="https://colorlib.com" target="_blank">Colorlib</a>
-						<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						<script>document.write(new Date().getFullYear());</script> Todos los derechos reservados.
 					</p>
 				</div>
 			</div>
@@ -513,6 +543,22 @@
 			const postalPreview = document.getElementById('postalPreview');
 			const previewTitle = postalPreview.querySelector('h2');
 			const overlay = document.getElementById('overlay');
+			const postalForm = document.querySelector('.contact-form');
+
+			// Manejar el envío del formulario
+			postalForm.addEventListener('submit', function(e) {
+				e.preventDefault(); // Prevenir el comportamiento por defecto
+				
+				// Crear y reproducir el sonido
+				const sound = new Audio('sounds/sent.wav');
+				sound.play().then(() => {
+					// Mostrar el mensaje de alerta después de que el sonido comience a reproducirse
+					alert('Postal Enviada');
+				}).catch(error => {
+					// Si hay algún error con el sonido, mostrar el alert de todos modos
+					alert('Postal Enviada');
+				});
+			});
 
 			imageSelect.addEventListener('change', function() {
 				if (this.value === 'custom') {
