@@ -14,14 +14,6 @@
       {
         "source": "/index.html",
         "destination": "/index.html"
-      },
-      {
-        "source": "/about.html",
-        "destination": "/about.html"
-      },
-      {
-        "source": "/contact.html",
-        "destination": "/contact.html"
       }
     ]
   }
